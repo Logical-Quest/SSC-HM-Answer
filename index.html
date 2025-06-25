@@ -1,12 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Higher Mathematics</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Higher Mathematics</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: #f8f9fa;
+        }
+        iframe {
+            width: 100%;
+            height: 100vh;
+            border: none;
+            display: block;
+        }
+        .error-message {
+            display: none;
+            text-align: center;
+            color: #d32f2f;
+            font-weight: bold;
+            padding: 20px;
+            background-color: #ffebee;
+            margin: 20px;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body>
-    <iframe src="https://script.google.com/macros/s/AKfycbwNSpY1ETV3pieU1raLKCkUvEZVedgxEM9U9PemfzjvaRYSe0B8Hk_yo2MKv27YwMU8/exec"
-            style="width: 100%; height: 100vh; border: none;"></iframe>
+    <div id="error-message" class="error-message">
+        Failed to load content. Please check your internet connection or contact support.
+    </div>
+    <iframe 
+        id="physics-iframe"
+        src="https://script.google.com/macros/s/AKfycbzHiwkmf-Za0069yErXXXbiv7M4BEWtImsFxDgcD6dkksaHDbds2x8WR9VOESCPc7R3/exec"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-top-navigation"
+        onload="handleIframeLoad()"
+        onerror="handleIframeError()">
+    </iframe>
+    <script>
+        function handleIframeLoad() {
+            console.log('Iframe loaded successfully');
+            document.getElementById('error-message').style.display = 'none';
+        }
+
+        function handleIframeError() {
+            console.error('Iframe failed to load');
+            document.getElementById('error-message').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
+
 
